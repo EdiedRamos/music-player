@@ -1,7 +1,4 @@
-import { PlayerBar } from "./PlayerBar";
-import { PlayerContainer } from "./PlayerContainer";
-import { PlayerControl } from "./PlayerControl";
-import { PlayerInfo } from "./PlayerInfo";
+import { PlayerBar, PlayerContainer, PlayerControl, PlayerInfo } from ".";
 
 export const Player = () => {
   return (

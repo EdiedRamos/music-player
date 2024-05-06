@@ -10,6 +10,7 @@ interface PlayerContext {
   handleNext: () => void;
   handlePrevious: () => void;
   handlePlay: () => void;
+  handleCurrentTime: (time: number) => void;
 }
 
 export const PlayerContext = createContext<PlayerContext | null>(null);

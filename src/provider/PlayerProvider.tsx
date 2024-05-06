@@ -3,7 +3,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import type { Song } from "../types/Songs";
 
 import { Songs } from "../data/songs";
-import { getNextIndex, getPreviousIndex, toMinutes } from "../utils";
+import { getNextIndex, getPreviousIndex } from "../utils";
 
 type PlayerProvider = {
   children: ReactNode;
@@ -40,6 +40,10 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     if (!currentSong) return;
     audio[isPlaying ? "pause" : "play"]();
     setIsPlaying((prev) => !prev);
+  };
+
+  const handleCurrentTime = (time: number) => {
+    audio.currentTime = time;
   };
 
   // Set the songs
@@ -82,11 +86,12 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     songs,
     currentSong,
     currentTime,
+    isPlaying,
     duration,
     handleNext,
     handlePrevious,
     handlePlay,
-    isPlaying,
+    handleCurrentTime,
   };
 
   return (

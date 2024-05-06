@@ -1,3 +1,5 @@
+import { PlayerContainer } from "./PlayerContainer";
+
 export const Player = () => {
-  return <div>player</div>;
+  return <PlayerContainer>player</PlayerContainer>;
 };

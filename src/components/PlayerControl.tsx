@@ -1,16 +1,15 @@
 import { PlayIcon, StopIcon, StopPlay, StopPlayR } from "../assets/icons";
 
 export const PlayerControl = () => {
+  const isPlaying = false;
+
   return (
-    <div>
-      <div>
-        <img src={StopPlay} />
-        <div>
-          <img src={PlayIcon} />
-          <img src={StopIcon} />
-        </div>
-        <img src={StopPlayR} />
+    <div className="control control__container">
+      <img className="control__previous" src={StopPlay} />
+      <div className="control__play-stop">
+        {isPlaying ? <img src={StopIcon} /> : <img src={PlayIcon} />}
       </div>
+      <img className="control__next" src={StopPlayR} />
     </div>
   );
 };

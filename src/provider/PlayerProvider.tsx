@@ -12,6 +12,15 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
   const [songs, setSongs] = useState<Array<Song> | null>(null);
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
 
+  const handleNext = () => {
+    if (!songs || !currentSong) return;
+    const currentSongIndex = songs.findIndex(
+      (song) => song.id === currentSong.id
+    );
+    const nextIndex = (currentSongIndex + 1) % songs.length;
+    setCurrentSong(songs[nextIndex]);
+  };
+
   useEffect(() => {
     setSongs(Songs);
   }, []);
@@ -25,6 +34,7 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
   const values = {
     songs,
     currentSong,
+    handleNext,
   };
 
   return (

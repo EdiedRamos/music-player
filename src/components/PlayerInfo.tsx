@@ -1,19 +1,18 @@
 import "../styles/components/PlayerInfo.scss";
 
-type PlayerInfo = {
-  imgSource: string;
-  songName: string;
-  songAuthor: string;
-};
+import { Songs } from "../data/songs";
 
-export const PlayerInfo = ({ imgSource, songAuthor, songName }: PlayerInfo) => {
+// Its secure, it exits
+const firstSong = Songs[0];
+
+export const PlayerInfo = () => {
   return (
     <div className="info info__container">
       <div className="info__image-container">
-        <img src={imgSource} alt={`${songName} img`} />
+        <img src={firstSong.preview} alt={`${firstSong.name} img`} />
       </div>
-      <p className="info__name">{songName}</p>
-      <p className="info__author">{songAuthor}</p>
+      <p className="info__name">{firstSong.name}</p>
+      <p className="info__author">{firstSong.author}</p>
     </div>
   );
 };

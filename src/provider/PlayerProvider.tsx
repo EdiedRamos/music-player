@@ -3,6 +3,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import type { Song } from "../types/Songs";
 
 import { Songs } from "../data/songs";
+import { getNextIndex, getPreviousIndex, toMinutes } from "../utils";
 
 type PlayerProvider = {
   children: ReactNode;
@@ -21,7 +22,7 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     const currentSongIndex = songs.findIndex(
       (song) => song.id === currentSong.id
     );
-    const nextIndex = (currentSongIndex + 1) % songs.length;
+    const nextIndex = getNextIndex(currentSongIndex, songs.length);
     setCurrentSong(songs[nextIndex]);
   };
 
@@ -30,7 +31,8 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     const currentSongIndex = songs.findIndex(
       (song) => song.id === currentSong.id
     );
-    const previousIndex = (currentSongIndex + songs.length - 1) % songs.length;
+
+    const previousIndex = getPreviousIndex(currentSongIndex, songs.length);
     setCurrentSong(songs[previousIndex]);
   };
 
@@ -63,8 +65,8 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
 
   // event listener for updating current time and duration
   useEffect(() => {
-    const handleMetadata = () => setDuration(audio.duration.toString());
-    const handleUpdate = () => setCurrentTime(audio.currentTime.toString());
+    const handleMetadata = () => setDuration(toMinutes(audio.duration));
+    const handleUpdate = () => setCurrentTime(toMinutes(audio.currentTime));
 
     audio.addEventListener("loadedmetadata", handleMetadata);
     audio.addEventListener("timeupdate", handleUpdate);

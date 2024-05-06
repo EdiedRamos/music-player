@@ -12,6 +12,7 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
   const [audio] = useState(new Audio());
   const [songs, setSongs] = useState<Array<Song> | null>(null);
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleNext = () => {
     if (!songs || !currentSong) return;
@@ -33,7 +34,8 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
 
   const handlePlay = () => {
     if (!currentSong) return;
-    audio.play();
+    audio[isPlaying ? "pause" : "play"]();
+    setIsPlaying((prev) => !prev);
   };
 
   useEffect(() => {
@@ -54,6 +56,7 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     handleNext,
     handlePrevious,
     handlePlay,
+    isPlaying,
   };
 
   return (

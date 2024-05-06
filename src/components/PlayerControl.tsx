@@ -5,8 +5,7 @@ import { PlayIcon, StopIcon, StopPlay, StopPlayR } from "../assets/icons";
 import { usePlayer } from "../hook";
 
 export const PlayerControl = () => {
-  const isPlaying = false;
-  const { handleNext, handlePrevious, handlePlay } = usePlayer();
+  const { handleNext, handlePrevious, handlePlay, isPlaying } = usePlayer();
 
   return (
     <div className="control control__container">

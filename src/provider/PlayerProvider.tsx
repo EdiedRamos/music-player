@@ -13,6 +13,8 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
   const [songs, setSongs] = useState<Array<Song> | null>(null);
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState("00:00");
+  const [duration, setDuration] = useState("00:00");
 
   const handleNext = () => {
     if (!songs || !currentSong) return;
@@ -59,10 +61,26 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     }
   }, [currentSong]);
 
+  // event listener for updating current time and duration
+  useEffect(() => {
+    const handleMetadata = () => setDuration(audio.duration.toString());
+    const handleUpdate = () => setCurrentTime(audio.currentTime.toString());
+
+    audio.addEventListener("loadedmetadata", handleMetadata);
+    audio.addEventListener("timeupdate", handleUpdate);
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", handleMetadata);
+      audio.removeEventListener("timeupdate", handleUpdate);
+    };
+  }, []);
+
   // values
   const values = {
     songs,
     currentSong,
+    currentTime,
+    duration,
     handleNext,
     handlePrevious,
     handlePlay,

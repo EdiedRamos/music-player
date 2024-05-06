@@ -1,9 +1,10 @@
 import "../styles/components/PlayerBar.scss";
 
-const currentTime = "00:39";
-const duration = "03:45";
+import { usePlayer } from "../hook";
 
 export const PlayerBar = () => {
+  const { currentTime, duration } = usePlayer();
+
   return (
     <div className="bar bar__container">
       <div className="bar__labels">

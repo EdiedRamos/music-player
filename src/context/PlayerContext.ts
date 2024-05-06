@@ -5,6 +5,8 @@ interface PlayerContext {
   songs: Array<Song> | null;
   currentSong: Song | null;
   isPlaying: boolean;
+  currentTime: string;
+  duration: string;
   handleNext: () => void;
   handlePrevious: () => void;
   handlePlay: () => void;

@@ -38,16 +38,19 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     setIsPlaying((prev) => !prev);
   };
 
+  // Set the songs
   useEffect(() => {
     setSongs(Songs);
   }, []);
 
+  // Set the first song when the app starts and the songs are loaded
   useEffect(() => {
     if (!songs || songs.length === 0 || currentSong) return;
     const [song] = songs;
     setCurrentSong(song);
   }, [songs]);
 
+  // Update the audio source acording to the current song and preserve the isPlaying state
   useEffect(() => {
     if (!currentSong) return;
     audio.src = currentSong.source;

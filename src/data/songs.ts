@@ -1,13 +1,7 @@
 import { Cover1, Cover2 } from "../assets/cover";
 import { Forest, LostInCityLight } from "../assets/songs";
 
-type Song = {
-  id: string;
-  preview: string;
-  source: string;
-  name: string;
-  author: string;
-};
+import type { Song } from "../types/Songs";
 
 export const Songs: Array<Song> = [
   {

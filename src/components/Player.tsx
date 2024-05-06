@@ -1,11 +1,15 @@
 import { PlayerBar, PlayerContainer, PlayerControl, PlayerInfo } from ".";
 
+import { PlayerProvider } from "../provider";
+
 export const Player = () => {
   return (
-    <PlayerContainer>
-      <PlayerInfo />
-      <PlayerBar />
-      <PlayerControl />
-    </PlayerContainer>
+    <PlayerProvider>
+      <PlayerContainer>
+        <PlayerInfo />
+        <PlayerBar />
+        <PlayerControl />
+      </PlayerContainer>
+    </PlayerProvider>
   );
 };

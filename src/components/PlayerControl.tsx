@@ -6,11 +6,11 @@ import { usePlayer } from "../hook";
 
 export const PlayerControl = () => {
   const isPlaying = false;
-  const { handleNext } = usePlayer();
+  const { handleNext, handlePrevious } = usePlayer();
 
   return (
     <div className="control control__container">
-      <button className="control__previous">
+      <button className="control__previous" onClick={handlePrevious}>
         <img src={StopPlay} />
       </button>
       <button className="control__play-stop">

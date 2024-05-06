@@ -21,6 +21,15 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     setCurrentSong(songs[nextIndex]);
   };
 
+  const handlePrevious = () => {
+    if (!songs || !currentSong) return;
+    const currentSongIndex = songs.findIndex(
+      (song) => song.id === currentSong.id
+    );
+    const previousIndex = (currentSongIndex + songs.length - 1) % songs.length;
+    setCurrentSong(songs[previousIndex]);
+  };
+
   useEffect(() => {
     setSongs(Songs);
   }, []);
@@ -35,6 +44,7 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     songs,
     currentSong,
     handleNext,
+    handlePrevious,
   };
 
   return (

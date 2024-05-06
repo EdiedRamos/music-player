@@ -17,6 +17,9 @@
     }
 
     &__play-stop, &__previous, &__next {
+        border: none;
+        background-color: transparent;
+
         &:hover {
             cursor: pointer;
         }

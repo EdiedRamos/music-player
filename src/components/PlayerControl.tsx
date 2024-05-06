@@ -10,12 +10,14 @@ export const PlayerControl = () => {
 
   return (
     <div className="control control__container">
-      <img className="control__previous" src={StopPlay} />
-      <div className="control__play-stop">
+      <button className="control__previous">
+        <img src={StopPlay} />
+      </button>
+      <button className="control__play-stop">
         {isPlaying ? <img src={StopIcon} /> : <img src={PlayIcon} />}
-      </div>
-      <button onClick={handleNext}>
-        <img className="control__next" src={StopPlayR} />
+      </button>
+      <button className="control__next" onClick={handleNext}>
+        <img src={StopPlayR} />
       </button>
     </div>
   );

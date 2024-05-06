@@ -8,7 +8,7 @@ type PlayerInfo = {
 
 export const PlayerInfo = ({ imgSource, songAuthor, songName }: PlayerInfo) => {
   return (
-    <div className="player__info">
+    <div className="info info__container">
       <div className="info__image-container">
         <img src={imgSource} alt={`${songName} img`} />
       </div>

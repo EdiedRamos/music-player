@@ -45,9 +45,16 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
   useEffect(() => {
     if (!songs || songs.length === 0 || currentSong) return;
     const [song] = songs;
-    audio.src = song.source;
     setCurrentSong(song);
   }, [songs]);
+
+  useEffect(() => {
+    if (!currentSong) return;
+    audio.src = currentSong.source;
+    if (isPlaying) {
+      audio.play();
+    }
+  }, [currentSong]);
 
   // values
   const values = {

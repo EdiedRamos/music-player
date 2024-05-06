@@ -9,6 +9,7 @@ type PlayerProvider = {
 };
 
 export const PlayerProvider = ({ children }: PlayerProvider) => {
+  const [audio] = useState(new Audio());
   const [songs, setSongs] = useState<Array<Song> | null>(null);
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
 
@@ -30,13 +31,20 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     setCurrentSong(songs[previousIndex]);
   };
 
+  const handlePlay = () => {
+    if (!currentSong) return;
+    audio.play();
+  };
+
   useEffect(() => {
     setSongs(Songs);
   }, []);
 
   useEffect(() => {
     if (!songs || songs.length === 0 || currentSong) return;
-    setCurrentSong(songs[0]);
+    const [song] = songs;
+    audio.src = song.source;
+    setCurrentSong(song);
   }, [songs]);
 
   // values
@@ -45,6 +53,7 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
     currentSong,
     handleNext,
     handlePrevious,
+    handlePlay,
   };
 
   return (

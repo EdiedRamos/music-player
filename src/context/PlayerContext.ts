@@ -6,6 +6,7 @@ interface PlayerContext {
   currentSong: Song | null;
   handleNext: () => void;
   handlePrevious: () => void;
+  handlePlay: () => void;
 }
 
 export const PlayerContext = createContext<PlayerContext | null>(null);

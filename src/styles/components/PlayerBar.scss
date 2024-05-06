@@ -17,16 +17,39 @@
     }
 
     &__progress {
+        $size: 4px;
+
         margin-top: 4px;
         border-radius: 4px;
         background-color: $light;
-        height: 4px;
+        height: $size;
+
+        &:hover &--percentage {
+            &::before {
+                visibility: visible;
+                cursor: pointer;
+            }
+        }
 
         &--percentage {
+            position: relative;
             border-radius: inherit;
             background-color: $pink;
             width: 50%;
             height: inherit;
+
+            &::before {
+                $curSize: calc(2 * $size);
+                position: absolute;
+                top: calc($curSize * 0.25 * -1);
+                right: calc($curSize * 0.25 * -1);
+                visibility: hidden;
+                border-radius: 50%;
+                background-color: $pink;
+                width: $curSize;
+                height: $curSize;
+                content: "";
+            }
         }
     }
 }

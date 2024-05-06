@@ -1,3 +1,4 @@
+import { PlayerBar } from "./PlayerBar";
 import { PlayerContainer } from "./PlayerContainer";
 import { PlayerInfo } from "./PlayerInfo";
 import { Songs } from "../data/songs";
@@ -13,6 +14,7 @@ export const Player = () => {
         songAuthor={firstSong.author}
         songName={firstSong.name}
       />
+      <PlayerBar />
     </PlayerContainer>
   );
 };

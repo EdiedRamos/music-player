@@ -1,3 +1,5 @@
+import "../styles/components/PlayerControl.scss";
+
 import { PlayIcon, StopIcon, StopPlay, StopPlayR } from "../assets/icons";
 
 export const PlayerControl = () => {

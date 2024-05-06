@@ -1,5 +1,6 @@
 import "../styles/components/PlayerBar.scss";
 
+import { toMinutes } from "../utils";
 import { usePlayer } from "../hook";
 
 export const PlayerBar = () => {
@@ -8,11 +9,14 @@ export const PlayerBar = () => {
   return (
     <div className="bar bar__container">
       <div className="bar__labels">
-        <p>{currentTime}</p>
-        <p>{duration}</p>
+        <p>{toMinutes(currentTime)}</p>
+        <p>{toMinutes(duration)}</p>
       </div>
       <div className="bar__progress">
-        <div className="bar__progress--percentage"></div>
+        <div
+          className="bar__progress--percentage"
+          style={{ width: `${(currentTime * 100) / duration}%` }}
+        ></div>
       </div>
     </div>
   );

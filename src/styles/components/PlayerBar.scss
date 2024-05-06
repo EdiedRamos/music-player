@@ -1,0 +1,32 @@
+@import "../font";
+@import "../color";
+
+.bar {
+    &__container {
+        margin-top: 24px;
+    }
+
+    &__labels {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            color: $gray;
+            font-size: $font-size-50;
+        }
+    }
+
+    &__progress {
+        margin-top: 4px;
+        border-radius: 4px;
+        background-color: $light;
+        height: 4px;
+
+        &--percentage {
+            border-radius: inherit;
+            background-color: $pink;
+            width: 50%;
+            height: inherit;
+        }
+    }
+}

@@ -1,3 +1,5 @@
+import "../styles/components/PlayerBar.scss";
+
 const currentTime = "00:39";
 const duration = "03:45";
 

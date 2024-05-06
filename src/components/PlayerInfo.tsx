@@ -1,18 +1,21 @@
 import "../styles/components/PlayerInfo.scss";
 
-import { Songs } from "../data/songs";
-
-// Its secure, it exits
-const firstSong = Songs[0];
+import { usePlayer } from "../hook";
 
 export const PlayerInfo = () => {
+  const { currentSong } = usePlayer();
+
+  if (!currentSong) {
+    return <p>Song is required</p>;
+  }
+
   return (
     <div className="info info__container">
       <div className="info__image-container">
-        <img src={firstSong.preview} alt={`${firstSong.name} img`} />
+        <img src={currentSong.preview} alt={`${currentSong.name} img`} />
       </div>
-      <p className="info__name">{firstSong.name}</p>
-      <p className="info__author">{firstSong.author}</p>
+      <p className="info__name">{currentSong.name}</p>
+      <p className="info__author">{currentSong.author}</p>
     </div>
   );
 };

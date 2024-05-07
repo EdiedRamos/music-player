@@ -18,11 +18,7 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
   const [duration, setDuration] = useState(0);
 
   const handleNext = () => {
-    console.log("CALLED");
-    if (!songs || !currentSong) {
-      console.log("BYE", { songs }, { currentSong });
-      return;
-    }
+    if (!songs || !currentSong) return;
     const currentSongIndex = songs.findIndex(
       (song) => song.id === currentSong.id
     );

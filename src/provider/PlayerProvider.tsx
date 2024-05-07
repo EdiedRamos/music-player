@@ -18,7 +18,11 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
   const [duration, setDuration] = useState(0);
 
   const handleNext = () => {
-    if (!songs || !currentSong) return;
+    console.log("CALLED");
+    if (!songs || !currentSong) {
+      console.log("BYE", { songs }, { currentSong });
+      return;
+    }
     const currentSongIndex = songs.findIndex(
       (song) => song.id === currentSong.id
     );
@@ -74,12 +78,14 @@ export const PlayerProvider = ({ children }: PlayerProvider) => {
 
     audio.addEventListener("loadedmetadata", handleMetadata);
     audio.addEventListener("timeupdate", handleUpdate);
+    audio.addEventListener("ended", handleNext);
 
     return () => {
       audio.removeEventListener("loadedmetadata", handleMetadata);
       audio.removeEventListener("timeupdate", handleUpdate);
+      audio.removeEventListener("ended", handleNext);
     };
-  }, []);
+  }, [songs, currentSong]);
 
   // values
   const values = {
